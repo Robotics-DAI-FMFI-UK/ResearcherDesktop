@@ -10,4 +10,4 @@ class ResearcherDesktopApplicationTests {
 	void contextLoads() {
 	}
 
-}o
+}
