@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-canvas:     #FBF7F1;
+  --bg-primary:    #FFFFFF;
+  --secondary:     #F5EFE6;
+
+  --accent:        #6E2E5C;
+  --accent-hover:  #57234A;
+  --accent-soft:   #F6ECF2;
+
+  --amber:         #C6861E;
+  --amber-soft:    #FDF5E6;
+
+  --text-primary:   #1E1522;
+  --text-secondary: #574963;
+  --text-muted:     #78697F;
+
+  --border:        #E6DDCE;
+  --shadow-sm: 0 1px 2px rgba(30, 21, 34, 0.04), 0 1px 3px rgba(30, 21, 34, 0.06);
+  --shadow-md: 0 4px 8px -2px rgba(30, 21, 34, 0.08), 0 2px 4px -1px rgba(30, 21, 34, 0.04);
+  --shadow-lg: 0 12px 24px -8px rgba(30, 21, 34, 0.14), 0 4px 8px -2px rgba(30, 21, 34, 0.06);
+
+  --danger:    #B0344D;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-canvas);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: 'Merriweather', Georgia, serif;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+}

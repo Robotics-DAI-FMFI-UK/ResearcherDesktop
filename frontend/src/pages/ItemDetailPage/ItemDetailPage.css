@@ -1,0 +1,312 @@
+.detail-loading {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 2rem;
+}
+
+.detail-layout {
+  display: flex;
+  gap: 0;
+  min-height: calc(100vh - 64px);
+  margin: -2rem;
+  background: var(--bg-canvas);
+}
+
+.detail-main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+.detail-back-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.detail-back {
+  background: transparent;
+  border: none;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.12s;
+}
+
+.detail-back:hover { color: var(--text-primary); }
+
+.detail-delete {
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: color 0.12s;
+}
+
+.detail-delete:hover { color: hsl(0, 84%, 60%); }
+
+.detail-image-actual {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.detail-image-header {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.detail-image-heading {
+  color: #fff;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 1rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.detail-title-row { margin-bottom: 0.5rem; }
+
+.detail-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0.1rem 0.25rem;
+  margin: -0.1rem -0.25rem;
+  transition: background 0.12s;
+}
+
+.detail-title:hover { background: var(--accent-soft); }
+
+.detail-title-input {
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--accent);
+  outline: none;
+  width: 100%;
+}
+
+.detail-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.detail-dot { color: var(--text-muted); }
+
+.detail-category-link {
+  background: transparent;
+  border: none;
+  font-size: 0.875rem;
+  color: var(--accent);
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.12s;
+}
+
+.detail-category-link:hover { opacity: 0.75; }
+
+.detail-desc-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+
+.detail-desc-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  font-family: inherit;
+}
+
+.detail-desc-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 0.25rem;
+  margin: -0.25rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  transition: background 0.12s;
+}
+
+.detail-desc-text:hover { background: var(--accent-soft); }
+.detail-desc-text.placeholder { color: var(--text-muted); font-style: italic; }
+
+.detail-desc-textarea {
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.5rem;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.15s;
+}
+
+.detail-desc-textarea:focus { border-color: var(--accent); }
+
+.detail-related {
+  width: 280px;
+  flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  background: var(--bg-primary);
+  padding: 2rem 1.25rem;
+  overflow-y: auto;
+}
+
+.detail-related-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.detail-related-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.detail-related-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.detail-related-count {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--amber);
+  background: var(--amber-soft);
+  border-radius: 999px;
+  padding: 1px 7px;
+  line-height: 1.6;
+}
+
+.detail-related-add {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s;
+}
+
+.detail-related-add:hover { opacity: 0.85; }
+
+.detail-related-empty {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.detail-related-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.detail-related-item {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: background 0.12s;
+}
+
+.detail-related-item:hover { background: var(--accent-soft); }
+
+.detail-related-item-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.detail-related-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail-related-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.detail-related-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-related-cat {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.detail-related-unlink {
+  background: transparent;
+  border: none;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  padding: 0.25rem 0.75rem 0.25rem 0.25rem;
+  flex-shrink: 0;
+  transition: color 0.12s;
+}
+
+.detail-related-unlink:hover { color: hsl(0, 84%, 60%); }
+

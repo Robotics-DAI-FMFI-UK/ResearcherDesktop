@@ -1,6 +1,8 @@
 .DS_Store
 .idea/
 
+backend/src/main/resources/application-prod.properties
+
 backend/target/
 backend/*.jar
 

@@ -1,0 +1,80 @@
+.cselect {
+  width: 100%;
+}
+
+.cselect-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s;
+}
+
+.cselect-trigger:hover,
+.cselect-trigger.open {
+  border-color: var(--accent);
+}
+
+.cselect-arrow {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: transform 0.15s;
+  flex-shrink: 0;
+}
+
+.cselect-trigger.open .cselect-arrow {
+  transform: rotate(180deg);
+}
+
+.cselect-dropdown {
+  margin-top: 4px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 0.25rem;
+}
+
+.cselect-option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.9rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.cselect-option:hover {
+  background: var(--accent-soft);
+}
+
+.cselect-option.selected {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.cselect-check {
+  width: 1rem;
+  font-size: 0.75rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
