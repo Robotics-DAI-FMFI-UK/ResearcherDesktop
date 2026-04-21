@@ -100,6 +100,7 @@ public class ResearchItemService {
         fileStorageService.delete(item.getFilePath());
         String path = fileStorageService.upload(file, owner.getId().toString(), "files");
         item.setFilePath(path);
+        item.setFileName(file.getOriginalFilename());
         return ResearchItemResponse.from(itemRepository.save(item), getRelatedItems(item));
     }
 
@@ -138,8 +139,6 @@ public class ResearchItemService {
         item.setTitle(request.getTitle());
         item.setDescription(request.getDescription());
         item.setDate(request.getDate());
-        item.setImagePath(request.getImagePath());
-        item.setFilePath(request.getFilePath());
         item.setOwner(owner);
 
         Category category = categoryRepository.findByIdAndOwner(request.getCategoryId(), owner)

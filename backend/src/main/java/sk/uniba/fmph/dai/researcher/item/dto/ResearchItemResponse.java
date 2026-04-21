@@ -23,6 +23,7 @@ public class ResearchItemResponse {
     private LocalDate date;
     private String imagePath;
     private String filePath;
+    private String fileName;
     private UUID categoryId;
     private String categoryName;
     private List<RelatedItemResponse> relatedItems;
@@ -37,6 +38,7 @@ public class ResearchItemResponse {
                 item.getDate(),
                 item.getImagePath(),
                 item.getFilePath(),
+                item.getFileName(),
                 item.getCategory().getId(),
                 item.getCategory().getName(),
                 relatedItems,

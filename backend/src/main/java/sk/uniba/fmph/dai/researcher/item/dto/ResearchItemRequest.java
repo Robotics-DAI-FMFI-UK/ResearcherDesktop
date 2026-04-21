@@ -25,8 +25,4 @@ public class ResearchItemRequest {
 
     @NotNull
     private UUID categoryId;
-
-    private String imagePath;
-
-    private String filePath;
 }

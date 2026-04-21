@@ -1,5 +1,5 @@
 CREATE TABLE research_items (
-    id             UUID         PRIMARY KEY DEFAULT gen_random_uuid(),
+    id             UUID         PRIMARY KEY,
     title          VARCHAR(255) NOT NULL,
     description    TEXT,
     date           DATE,
@@ -16,7 +16,7 @@ CREATE TABLE research_items (
 );
 
 CREATE TABLE research_item_relations (
-    id             UUID      PRIMARY KEY DEFAULT gen_random_uuid(),
+    id             UUID      PRIMARY KEY,
     source_item_id UUID      NOT NULL REFERENCES research_items(id) ON DELETE CASCADE,
     target_item_id UUID      NOT NULL REFERENCES research_items(id) ON DELETE CASCADE,
     created_at     TIMESTAMP NOT NULL DEFAULT now(),

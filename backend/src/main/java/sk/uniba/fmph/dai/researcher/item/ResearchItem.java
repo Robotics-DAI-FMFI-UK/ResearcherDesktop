@@ -28,6 +28,9 @@ public class ResearchItem extends BaseEntity {
     @Column(length = 500)
     private String filePath;
 
+    @Column(length = 255)
+    private String fileName;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
