@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const client = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: 'http://kempelen.dai.fmph.uniba.sk:8080/api',
 })
 
 client.interceptors.request.use((config) => {

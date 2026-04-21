@@ -64,6 +64,10 @@
   flex-shrink: 0;
 }
 
+.item-card-avatar-img {
+  object-fit: cover;
+}
+
 .item-card-meta {
   flex: 1;
   min-width: 0;

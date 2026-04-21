@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
-import { deleteItem } from '../../api/items'
+import { deleteItem, getFile } from '../../api/items'
 import { avatarColor } from '../../utils/avatarColor'
 import './ItemCard.css'
 import '../CategoryModal/CategoryModal.css'
@@ -10,6 +10,25 @@ export default function ItemCard({ item, onDeleted }) {
   const navigate = useNavigate()
   const color = avatarColor(item.categoryName)
   const [confirmOpen, setConfirmOpen] = useState(false)
+  const [imageUrl, setImageUrl] = useState(null)
+
+  useEffect(() => {
+    if (!item.imagePath) {
+      return
+    }
+    let url
+    getFile(item.imagePath)
+      .then((r) => {
+        url = URL.createObjectURL(r.data)
+        setImageUrl(url)
+      })
+      .catch(() => {})
+    return () => {
+      if (url) {
+        URL.revokeObjectURL(url)
+      }
+    }
+  }, [item.imagePath])
 
   async function handleDelete(e) {
     e.stopPropagation()
@@ -26,9 +45,13 @@ export default function ItemCard({ item, onDeleted }) {
     <>
       <div className="item-card" onClick={() => navigate(`/items/${item.id}`)}>
         <div className="item-card-top">
-          <div className="item-card-avatar" style={{ background: color }}>
-            {item.title.charAt(0).toUpperCase()}
-          </div>
+          {imageUrl ? (
+            <img className="item-card-avatar item-card-avatar-img" src={imageUrl} alt={item.title} />
+          ) : (
+            <div className="item-card-avatar" style={{ background: color }}>
+              {item.title.charAt(0).toUpperCase()}
+            </div>
+          )}
           <div className="item-card-meta">
             <h3 className="item-card-title">{item.title}</h3>
             <span className="item-card-category">{item.categoryName}</span>

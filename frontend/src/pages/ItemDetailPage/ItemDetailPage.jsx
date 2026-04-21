@@ -132,6 +132,31 @@ export default function ItemDetailPage() {
           <span>Uploaded {item.date ?? '—'}</span>
         </div>
 
+        {item.filePath && (
+          <div className="detail-file-card">
+            <h3 className="detail-desc-label">Attached File</h3>
+            <div className="detail-file-row">
+              <span className="detail-file-name">{item.fileName}</span>
+              <button
+                className="detail-file-download"
+                onClick={() => {
+                  getFile(item.filePath).then((r) => {
+                    const filename = item.fileName
+                    const url = URL.createObjectURL(r.data)
+                    const a = document.createElement('a')
+                    a.href = url
+                    a.download = filename
+                    a.click()
+                    URL.revokeObjectURL(url)
+                  })
+                }}
+              >
+                Download
+              </button>
+            </div>
+          </div>
+        )}
+
         <div className="detail-desc-card">
           <h3 className="detail-desc-label">Description</h3>
           {editing === 'description' ? (
