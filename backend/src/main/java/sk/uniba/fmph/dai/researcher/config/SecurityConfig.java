@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-import sk.uniba.fmph.dai.researcher.auth.filter.JwtAuthFilter;
+import sk.uniba.fmph.dai.researcher.config.JwtAuthFilter;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class SecurityConfig {
             .sessionManagement(session ->
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/error").permitAll()
+                .requestMatchers("/api/auth/**", "/api/admin/**", "/api/calendar/callback", "/error").permitAll()
                 .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

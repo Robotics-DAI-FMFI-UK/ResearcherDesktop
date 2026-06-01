@@ -1,7 +1,0 @@
-spring.application.name=researcher
-server.port=8016
-spring.datasource.url=jdbc:postgresql://localhost:5432/DBNAME
-spring.datasource.username=DBUSER
-spring.datasource.password=DBPASSWORD
-spring.jpa.hibernate.ddl-auto=validate
-

@@ -11,6 +11,7 @@
   justify-content: space-between;
   padding: 0 1.5rem;
   box-shadow: var(--shadow-sm);
+  z-index: 1;
 }
 
 .navbar-left {
@@ -27,41 +28,21 @@
   letter-spacing: -0.01em;
 }
 
-.navbar-modes {
+
+.navbar-calendar-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
   display: flex;
   align-items: center;
-  gap: 2px;
-  background: var(--secondary);
-  border-radius: 8px;
-  padding: 3px;
-}
-
-.mode-btn {
-  padding: 0.3rem 0.9rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 6px;
-  border: none;
-  font-size: 0.82rem;
-  font-weight: 500;
-  background: transparent;
-  color: var(--text-muted);
-  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
-  line-height: 1.4;
+  transition: color 0.15s, background 0.15s;
 }
 
-.mode-btn:not(:disabled):hover {
-  color: var(--text-primary);
-  background: rgba(110, 46, 92, 0.06);
-}
-
-.mode-btn.active {
-  background: var(--accent);
-  color: #fff;
-  box-shadow: 0 1px 3px rgba(110, 46, 92, 0.3);
-}
-
-.mode-btn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+.navbar-calendar-btn:hover {
+  color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .navbar-right {

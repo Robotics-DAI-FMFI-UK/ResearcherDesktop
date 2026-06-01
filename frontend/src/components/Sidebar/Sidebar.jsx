@@ -1,30 +1,33 @@
 import { useState } from 'react'
-import { createCategory, updateCategory, deleteCategory } from '../../api/categories'
+import { createPortal } from 'react-dom'
 import { Icon } from '../../utils/icons'
 import CategoryModal from '../CategoryModal/CategoryModal'
 import './Sidebar.css'
 
-export default function Sidebar({ categories, selectedId, onSelect, onCategoriesChange, mode }) {
+export default function Sidebar({ categories, selectedId, onSelect, onCreate, onUpdate, onDelete }) {
   const [modal, setModal] = useState(null)
-  const canEdit = mode !== 'BASIC'
+  const [deleteTarget, setDeleteTarget] = useState(null)
 
   const totalCount = categories.reduce((sum, c) => sum + (c.itemCount || 0), 0)
 
   async function handleSave(data) {
     if (modal === 'create') {
-      await createCategory(data)
+      await onCreate(data)
     } else {
-      await updateCategory(modal.id, data)
+      await onUpdate(modal.id, data)
     }
-    onCategoriesChange()
+    setModal(null)
   }
 
-  async function handleDelete(e, category) {
+  function handleDelete(e, category) {
     e.stopPropagation()
-    if (!window.confirm(`Delete "${category.name}"?`)) return
-    await deleteCategory(category.id)
-    if (selectedId === category.id) { onSelect(null) }
-    onCategoriesChange()
+    setDeleteTarget(category)
+  }
+
+  async function confirmDelete() {
+    await onDelete(deleteTarget.id)
+    if (selectedId === deleteTarget.id) { onSelect(null) }
+    setDeleteTarget(null)
   }
 
   function openEdit(e, category) {
@@ -36,11 +39,9 @@ export default function Sidebar({ categories, selectedId, onSelect, onCategories
     <aside className="sidebar">
       <div className="sidebar-header">
         <span className="sidebar-label">Categories</span>
-        {canEdit && (
-          <button className="sidebar-add-btn" onClick={() => setModal('create')} title="New category">
-            <Icon name="plus" size={12} />
-          </button>
-        )}
+        <button className="sidebar-add-btn" onClick={() => setModal('create')} title="New category">
+          <Icon name="plus" size={12} />
+        </button>
       </div>
 
       <ul className="sidebar-list">
@@ -59,7 +60,7 @@ export default function Sidebar({ categories, selectedId, onSelect, onCategories
           </div>
         </li>
 
-        {categories.map((cat) => (
+        {[...categories].sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })).map((cat) => (
           <li
             key={cat.id}
             className={`sidebar-item ${selectedId === cat.id ? 'active' : ''}`}
@@ -73,12 +74,10 @@ export default function Sidebar({ categories, selectedId, onSelect, onCategories
             </div>
             <div className="sidebar-item-right">
               <span className="sidebar-item-count">{cat.itemCount || 0}</span>
-              {canEdit && (
-                <div className="sidebar-item-actions">
-                  <button className="sidebar-icon-btn" onClick={(e) => openEdit(e, cat)} title="Edit"><Icon name="pencil" size={12} /></button>
-                  <button className="sidebar-icon-btn delete" onClick={(e) => handleDelete(e, cat)} title="Delete">✕</button>
-                </div>
-              )}
+              <div className="sidebar-item-actions">
+                <button className="sidebar-icon-btn" onClick={(e) => openEdit(e, cat)} title="Edit"><Icon name="pencil" size={12} /></button>
+                <button className="sidebar-icon-btn delete" onClick={(e) => handleDelete(e, cat)} title="Delete">✕</button>
+              </div>
             </div>
           </li>
         ))}
@@ -90,6 +89,22 @@ export default function Sidebar({ categories, selectedId, onSelect, onCategories
           onSave={handleSave}
           onClose={() => setModal(null)}
         />
+      )}
+
+      {deleteTarget && createPortal(
+        <div className="delete-modal-backdrop">
+          <div className="delete-modal" onClick={(e) => e.stopPropagation()}>
+            <h3 className="delete-modal-title">Delete category?</h3>
+            <p className="delete-modal-body">
+              Are you sure you want to delete <strong>"{deleteTarget.name}"</strong>? All items in this category will also be deleted.
+            </p>
+            <div className="delete-modal-actions">
+              <button className="delete-modal-cancel" onClick={() => setDeleteTarget(null)}>Cancel</button>
+              <button className="delete-modal-confirm" onClick={confirmDelete}>Delete</button>
+            </div>
+          </div>
+        </div>,
+        document.body
       )}
     </aside>
   )

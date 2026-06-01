@@ -1,23 +1,11 @@
-import { useAuth } from '../../auth/AuthContext/AuthContext'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext'
 import { Icon } from '../../utils/icons'
 import './Navbar.css'
 
-const MODES = [
-  { key: 'BASIC', label: 'Basic' },
-  { key: 'EXTENDED', label: 'Extended' },
-  { key: 'ADVANCED', label: 'Advanced' },
-]
-
 export default function Navbar() {
-  const { user, logout, mode, updateMode } = useAuth()
-
-  async function handleModeChange(m) {
-    if (m === mode || m === 'ADVANCED') { return }
-    try {
-      await updateMode(m)
-    } catch {
-    }
-  }
+  const { user, logout } = useAuth()
+  const navigate = useNavigate()
 
   const initials = user?.username ? user.username.charAt(0).toUpperCase() : '?'
 
@@ -25,18 +13,9 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-left">
         <span className="navbar-logo">ResearchDesk</span>
-        <div className="navbar-modes">
-          {MODES.map(({ key, label }) => (
-            <button
-              key={key}
-              className={`mode-btn ${mode === key ? 'active' : ''}`}
-              onClick={() => handleModeChange(key)}
-              disabled={key === 'ADVANCED'}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        <button className="navbar-calendar-btn" onClick={() => navigate('/calendar')} title="Calendar">
+          <Icon name="calendar" size={16} />
+        </button>
       </div>
 
       <div className="navbar-right">

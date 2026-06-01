@@ -35,3 +35,149 @@
   margin-left: 0.25rem;
   align-self: center;
 }
+
+.home-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.new-item-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  background: hsl(340, 25%, 42%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.new-item-btn:hover { opacity: 0.9; }
+
+.gmail-scan-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.gmail-scan-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.gmail-scan-status {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  padding: 1rem 0;
+}
+
+.gmail-scan-empty {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  padding: 1rem 0;
+}
+
+.gmail-scan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.gmail-scan-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: var(--bg-canvas);
+  border-radius: 8px;
+}
+
+.gmail-scan-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.gmail-scan-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.gmail-scan-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.gmail-scan-deadline {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.gmail-scan-dates {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.gmail-scan-location {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.gmail-scan-url {
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gmail-scan-url:hover { text-decoration: underline; }
+
+.gmail-scan-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.gmail-scan-calendar-check {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.gmail-scan-import-btn {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+}
+
+.gmail-scan-done {
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-weight: 500;
+}

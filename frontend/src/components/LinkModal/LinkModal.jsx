@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
-import { addRelation, removeRelation } from '../../api/items'
+import { useItems } from '../../hooks/useItems'
 import { avatarColor } from '../../utils/avatarColor'
 import './LinkModal.css'
 
 export default function LinkModal({ open, onClose, currentItem, allItems, onUpdated }) {
+  const { addRelation, removeRelation } = useItems()
   const [search, setSearch] = useState('')
-  const [loading, setLoading] = useState(null)
+  const [busy, setBusy] = useState(null)
 
   if (!open) { return null }
 
@@ -20,7 +21,7 @@ export default function LinkModal({ open, onClose, currentItem, allItems, onUpda
   )
 
   async function toggle(item) {
-    setLoading(item.id)
+    setBusy(item.id)
     try {
       if (linkedIds.has(item.id)) {
         await removeRelation(currentItem.id, item.id)
@@ -29,7 +30,7 @@ export default function LinkModal({ open, onClose, currentItem, allItems, onUpda
       }
       await onUpdated()
     } finally {
-      setLoading(null)
+      setBusy(null)
     }
   }
 
@@ -60,7 +61,7 @@ export default function LinkModal({ open, onClose, currentItem, allItems, onUpda
                   key={item.id}
                   className={`link-modal-item ${linked ? 'linked' : ''}`}
                   onClick={() => toggle(item)}
-                  disabled={loading === item.id}
+                  disabled={busy === item.id}
                 >
                   <div className="link-modal-avatar" style={{ background: color }}>
                     {item.title.charAt(0).toUpperCase()}
