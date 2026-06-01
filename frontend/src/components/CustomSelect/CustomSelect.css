@@ -12,6 +12,7 @@
   border-radius: 6px;
   background: var(--bg-primary);
   font-size: 0.95rem;
+  line-height: 1.5;
   font-family: inherit;
   color: var(--text-primary);
   cursor: pointer;
@@ -36,7 +37,7 @@
 }
 
 .cselect-dropdown {
-  margin-top: 4px;
+  position: fixed;
   background: var(--bg-primary);
   border: 1px solid var(--border);
   border-radius: 8px;

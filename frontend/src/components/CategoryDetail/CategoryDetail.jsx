@@ -1,8 +1,7 @@
 import { useState, useRef } from 'react'
-import { updateCategory } from '../../api/categories'
 import './CategoryDetail.css'
 
-export default function CategoryDetail({ category, onUpdated }) {
+export default function CategoryDetail({ category, onUpdate }) {
   const [editing, setEditing] = useState(false)
   const [value, setValue] = useState('')
   const descRef = useRef(null)
@@ -15,18 +14,18 @@ export default function CategoryDetail({ category, onUpdated }) {
 
   async function save() {
     try {
-      await updateCategory(category.id, {
+      await onUpdate(category.id, {
         name: category.name,
         icon: category.icon,
         description: value.trim(),
       })
-      onUpdated()
     } finally {
       setEditing(false)
     }
   }
 
   function handleKeyDown(e) {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); save() }
     if (e.key === 'Escape') { setEditing(false) }
   }
 

@@ -1,4 +1,5 @@
 .cdp {
+  position: relative;
   width: 100%;
 }
 
@@ -38,13 +39,57 @@
 .cdp-trigger.open .cdp-arrow { transform: rotate(180deg); }
 
 .cdp-popup {
-  margin-top: 4px;
+  position: fixed;
+  width: 280px;
   background: var(--bg-primary);
   border: 1px solid var(--border);
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
   padding: 0.75rem;
-  min-width: 260px;
+}
+
+.cdp-manual {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.cdp-manual-input {
+  flex: 1;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.cdp-manual-input:focus { border-color: var(--accent); }
+.cdp-manual-input.error { border-color: #d9534f; }
+
+.cdp-manual-apply {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--accent);
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.cdp-manual-apply:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.cdp-manual-error {
+  font-size: 0.75rem;
+  color: #d9534f;
+  margin: 0 0 0.4rem;
 }
 
 .cdp-header {

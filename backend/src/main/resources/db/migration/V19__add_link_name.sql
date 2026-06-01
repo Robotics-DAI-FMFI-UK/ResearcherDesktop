@@ -1,0 +1,1 @@
+ALTER TABLE item_links ADD COLUMN name VARCHAR(255);

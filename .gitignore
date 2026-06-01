@@ -1,10 +1,18 @@
 .DS_Store
 .idea/
+.claude/
+.playwright-mcp/
 
-backend/src/main/resources/application-prod.properties
-
+backend/.env
 backend/target/
 backend/*.jar
+backend/uploads/
+uploads/
+logs/
 
 frontend/node_modules/
 frontend/dist/
+frontend/coverage/
+frontend/.env
+frontend/.env.local
+frontend/.env.production

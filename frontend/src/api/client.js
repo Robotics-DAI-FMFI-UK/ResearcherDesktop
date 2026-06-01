@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const client = axios.create({
-  baseURL: 'http://kempelen.dai.fmph.uniba.sk:8080/api',
+  baseURL: import.meta.env.VITE_API_URL ?? 'http://localhost:8080',
 })
 
 client.interceptors.request.use((config) => {
@@ -15,7 +15,7 @@ client.interceptors.request.use((config) => {
 client.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    if (error.response?.status === 401 && localStorage.getItem('token')) {
       localStorage.removeItem('token')
       localStorage.removeItem('user')
       window.location.href = '/login'

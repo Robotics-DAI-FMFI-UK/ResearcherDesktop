@@ -1,0 +1,224 @@
+.cdtp {
+  position: relative;
+  width: 100%;
+}
+
+.cdtp-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s;
+}
+
+.cdtp-trigger:hover,
+.cdtp-trigger.open {
+  border-color: var(--accent);
+}
+
+.cdtp-icon { font-size: 0.9rem; }
+
+.cdtp-value { flex: 1; }
+
+.cdtp-arrow {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.cdtp-trigger.open .cdtp-arrow { transform: rotate(180deg); }
+
+.cdtp-popup {
+  position: fixed;
+  width: 280px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 0.75rem;
+}
+
+.cdtp-manual {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.cdtp-manual-input {
+  flex: 1;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.cdtp-manual-input:focus { border-color: var(--accent); }
+.cdtp-manual-input.error { border-color: #d9534f; }
+
+.cdtp-manual-apply {
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  color: var(--accent);
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.cdtp-manual-apply:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.cdtp-manual-error {
+  font-size: 0.75rem;
+  color: #d9534f;
+  margin: 0 0 0.4rem;
+}
+
+.cdtp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.cdtp-nav {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+}
+
+.cdtp-nav:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cdtp-month-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cdtp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cdtp-dayname {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 0.2rem 0;
+}
+
+.cdtp-day {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cdtp-day:hover:not(.other) { background: var(--accent-soft); }
+
+.cdtp-day.other {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.cdtp-day.today {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.cdtp-day.selected {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Time section */
+.cdtp-time-section {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.6rem;
+}
+
+.cdtp-time-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+
+.cdtp-hours-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.cdtp-minutes-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.cdtp-time-btn {
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.25rem 0;
+  transition: background 0.1s, color 0.1s;
+  font-family: inherit;
+}
+
+.cdtp-time-btn:hover { background: var(--accent-soft); color: var(--accent); }
+
+.cdtp-time-btn.selected {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.cdtp-time-btn--wide { padding: 0.3rem 0; }

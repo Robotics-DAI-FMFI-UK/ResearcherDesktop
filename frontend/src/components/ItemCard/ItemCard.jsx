@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
-import { deleteItem, getFile } from '../../api/items'
+import { useItems } from '../../hooks/useItems'
 import { avatarColor } from '../../utils/avatarColor'
 import './ItemCard.css'
 import '../CategoryModal/CategoryModal.css'
 
 export default function ItemCard({ item, onDeleted }) {
   const navigate = useNavigate()
+  const { deleteItem, getFile } = useItems()
   const color = avatarColor(item.categoryName)
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [imageUrl, setImageUrl] = useState(null)
@@ -69,7 +70,7 @@ export default function ItemCard({ item, onDeleted }) {
         )}
 
         <div className="item-card-footer">
-          <span>{item.date ?? '—'}</span>
+          <span>{item.date ?? (item.createdAt ? item.createdAt.slice(0, 10) : '—')}</span>
           {item.relatedItems?.length > 0 && (
             <span className="item-card-linked">{item.relatedItems.length} linked</span>
           )}
@@ -77,7 +78,7 @@ export default function ItemCard({ item, onDeleted }) {
       </div>
 
       {confirmOpen && createPortal(
-        <div className="delete-modal-backdrop" onClick={() => setConfirmOpen(false)}>
+        <div className="delete-modal-backdrop">
           <div className="delete-modal" onClick={(e) => e.stopPropagation()}>
             <h3 className="delete-modal-title">Delete data?</h3>
             <p className="delete-modal-body">

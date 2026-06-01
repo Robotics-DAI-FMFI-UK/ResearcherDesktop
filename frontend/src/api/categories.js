@@ -1,16 +1,16 @@
 import client from './client'
 
 export const getCategories = () =>
-  client.get('/categories')
+  client.get('/api/categories')
 
 export const getCategory = (id) =>
-  client.get(`/categories/${id}`)
+  client.get(`/api/categories/${id}`)
 
 export const createCategory = (data) =>
-  client.post('/categories', data)
+  client.post('/api/categories', data)
 
 export const updateCategory = (id, data) =>
-  client.put(`/categories/${id}`, data)
+  client.put(`/api/categories/${id}`, data)
 
 export const deleteCategory = (id) =>
-  client.delete(`/categories/${id}`)
+  client.delete(`/api/categories/${id}`)

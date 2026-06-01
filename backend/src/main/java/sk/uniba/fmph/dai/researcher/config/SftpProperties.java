@@ -16,4 +16,5 @@ public class SftpProperties {
     private String username;
     private String password;
     private String basePath;
+    private String localBasePath = "uploads";
 }
