@@ -21,6 +21,9 @@ export default function Layout() {
 
   return (
     <>
+      <main className="main-content">
+        <Outlet context={{ categories, selectedCategory, selectedId, onCategoriesChange: refetch, updateCategory }} />
+      </main>
       <Navbar />
       <Sidebar
         categories={categories}
@@ -30,9 +33,6 @@ export default function Layout() {
         onUpdate={updateCategory}
         onDelete={deleteCategory}
       />
-      <main className="main-content">
-        <Outlet context={{ categories, selectedCategory, selectedId, onCategoriesChange: refetch, updateCategory }} />
-      </main>
     </>
   )
 }
