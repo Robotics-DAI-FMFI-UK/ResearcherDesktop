@@ -1,0 +1,7 @@
+.main-content {
+  margin-top: 64px;
+  margin-left: 256px;
+  min-height: calc(100vh - 64px);
+  padding: 2rem;
+  background: var(--bg-canvas);
+}
